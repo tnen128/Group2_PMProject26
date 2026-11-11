@@ -1,0 +1,10 @@
+,A: case = parcel,B: case = courier-day
+cases,261801,18880
+events,523602,523602
+activities,2,2
+variants,1,9567
+resources,665,665
+mean case duration (h),2.87,13.95
+median case duration (h),1.53,9.33
+start,2022-05-01 08:25:00+00:00,2022-05-01 08:25:00+00:00
+end,2022-10-31 19:28:00+00:00,2022-10-31 19:28:00+00:00
