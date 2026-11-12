@@ -18,4 +18,4 @@ One entry per consultation: what we showed, the feedback, and what we changed.
 
 **Also fixed:** in notebook 01, the step that merges repeated activities before the Inductive Miner dropped the first event of every courier-day. The corrected BPMN starts with *Accept order* (loop of accept and pick up), consistent with the DFG.
 
-**Answers to our other questions** (delay definition, pickup and delivery, cities, GPS trajectories, XES hand-in, page limit): to be added.
+**Open questions carried to the next consultation** (no decision yet): definition of delay, pickup and delivery, further cities, GPS trajectories, XES hand-in, page limit. Until then we follow the defaults D2–D5 in `docs/milestones.md`.
