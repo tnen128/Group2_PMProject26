@@ -1,0 +1,8 @@
+step,cases,events,activities,variants
+0 raw,261801,1446921,6,65
+1 remove_duplicates,261801,1446921,6,65
+2 keep_complete,261801,1446921,6,65
+3 drop_pickup_before_accept,261801,1446921,6,65
+4 reorder_events,261801,1446921,6,49
+5 merge_gps_fixes,261801,1151832,6,27
+6 add_case_attributes,261801,1151832,6,27
