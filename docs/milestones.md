@@ -6,7 +6,7 @@ Mohamed Badawy (`tnen128`) · Abdelrahman ElKoussy (`akoussy`)
 Dataset: **LaDe** (Cainiao last-mile parcels, May–Oct 2022). Focus: courier routing, batching and late pickups.
 Tasks: 1 Preprocessing (XES event log + metadata table), 2 Process discovery (BPMN), 3.2 Process enhancement (Option 2).
 
-Status: 11 Nov 2026. This plan refines the roadmap submitted on Moodle (`docs/roadmap/`) and keeps its phases and owners. We update it after every consultation.
+Status: 12 Nov 2026, after the first consultation (see `docs/consultations.md`). This plan refines the roadmap submitted on Moodle (`docs/roadmap/`) and keeps its phases and owners. We update it after every consultation.
 
 ## 1. Fixed dates
 
@@ -52,13 +52,14 @@ We attend the consultations as a group and in person, with a few slides and curr
   - `docs/preprocessing_decisions.md`: one entry per decision (case notion, case day, timestamp source, missing year, event order for equal timestamps, implausible durations, definition of late), each with alternatives, reason and effect.
   - Step table with parcels, cases, events and variants before and after each step.
   - Event log v1 as XES for Jilin; notebook `02_event_log.ipynb`.
+  - Progress 12 Nov: `02_event_log.ipynb` follows the course preprocessing tutorial: building decisions (Jans, Soffer & Jouck), case notion with convergence and divergence, a parcel log with six activities, a pipeline of filtering, transformation, abstraction and enrichment steps with the effect of each step, FEEED features, and XES v1 (`lade_jl_pickup_parcel_v1.xes.gz`). Still open: moving the pipeline to `src/lade/`, the decisions document, and the Disco check.
 - Done when: one command reproduces the log from raw data; every decision has a documented effect in numbers; the XES file loads in PM4Py and Disco with the same case and event counts.
 
 ### M2 · First process discovery (W3–W5, shown 24 Nov and 2 Dec) — Abdelrahman
 
 - Deliverables:
   - Discovery functions in `src/lade/discovery.py` and notebook `03_discovery.ipynb`.
-  - Comparison of at least two discovery algorithms (Inductive Miner, Heuristics Miner, plus the DFG) on at least two abstraction levels (single events, batches of consecutive accepts and pickups, refined activity labels), with fitness, precision and model size.
+  - Comparison of at least two discovery algorithms (Inductive Miner, Heuristics Miner, plus the DFG) on the parcel log with six activities and on the courier-day view, at least two abstraction levels (single events, batches of consecutive accepts and pickups, refined activity labels), with fitness, precision and model size.
   - One candidate BPMN model (`.bpmn` and image) and a short analysis of how preprocessing decisions change the model.
   - LNCS report skeleton in `report/`.
 - Done when: the comparison table exists; the candidate BPMN opens in a BPMN editor; the notebook runs on event log v1.
@@ -129,7 +130,7 @@ The plan works for either answer. We follow the default unless advised otherwise
 
 | # | Question | Default | If decided differently |
 |---|---|---|---|
-| D1 | Case notion | Courier-day as the main log (shows batching: 18,880 cases, 9,567 variants). The parcel log (1 variant) is kept as a second view for waiting times. | The event table is independent of the case notion, so another case (parcel, courier, object-centric) is a change in the last pipeline step. A parcel view with the planned time window as events is prepared in M2. |
+| D1 | Case notion | Updated after 12 Nov: **parcel** as the main log, with six activities from the six timestamp columns (accept, accept GPS fix, window opens, pick up, pickup GPS fix, window closes): no convergence, no divergence, 27 variants after preprocessing. The courier-day is kept as a second view for batching and is labelled as divergent (a median of 8 parcels per case causes false loops). | The event table is independent of the case notion, so another case (courier, pickup round, object-centric) is a change in the last pipeline step. |
 | D2 | Definition of "late" | Report both: pickup after the promised window (0.2%) and a long wait from accept to pickup (above the 90th percentile, about 6 h in Jilin). The long wait is the main delay measure because it has enough cases. Early pickups (29%) are reported as deviation from the plan. | The delay measure is one setting. If only "after the window" counts, Jilin has about 500 late parcels, so Part B of M5 needs further cities (see D4). |
 | D3 | Combine pickup and delivery | Pickup only. The delivery data has no promised window, parcels are not linked between the two files, and in a first check only 4 of 665 Jilin pickup couriers also appear in the delivery data. | A separate delivery log built with the same pipeline, used for comparison. |
 | D4 | Jilin or more cities | Jilin as the main log and the submitted XES. Other cities run through the same pipeline after the mid-term and are used for comparison in M5. | A larger city as the main log: same pipeline, larger XES file. |
@@ -150,7 +151,7 @@ Further points to clarify: how the XES file should be handed in (compressed, abo
 
 | Risk | Mitigation |
 |---|---|
-| The process has only two recorded activities, so the model can become trivial. | Courier-day case notion, batch abstraction and refined activity labels (M2); a parcel view with planned window events as an alternative. |
+| The process has only two recorded activities, so the model can become trivial. | Addressed on 12 Nov: all six timestamp columns become activities (window and GPS fix events), giving 27 parcel variants; refined activity labels and courier-level rounds as further options (M2). |
 | Very few pickups are late with respect to the window. | Two delay measures (D2); further cities for more cases (D4). |
 | Timestamps have minute resolution; 11% of events share a minute with another event of the same courier-day. | Fixed and documented ordering rule; its effect on variants is measured in M1. |
 | Event log changes late and results become inconsistent. | Freeze on 18 Dec (`log-final`); all enhancement results are recomputed on the frozen log. |
