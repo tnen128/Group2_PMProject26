@@ -6,7 +6,7 @@ Mohamed Badawy (`tnen128`) · Abdelrahman ElKoussy (`akoussy`)
 Dataset: **LaDe** (Cainiao last-mile parcels, May–Oct 2022). Focus: courier routing, batching and late pickups.
 Tasks: 1 Preprocessing (XES event log + metadata table), 2 Process discovery (BPMN), 3.2 Process enhancement (Option 2).
 
-Status: 12 Nov 2026, after the first consultation (see `docs/consultations.md`). This plan refines the roadmap submitted on Moodle (`docs/roadmap/`) and keeps its phases and owners. We update it after every consultation.
+Status: 17 Nov 2026, after the first consultation (see `docs/consultations.md`). This plan refines the roadmap submitted on Moodle (`docs/roadmap/`) and keeps its phases and owners. We update it after every consultation.
 
 ## 1. Fixed dates
 
@@ -62,6 +62,7 @@ We attend the consultations as a group and in person, with a few slides and curr
   - Comparison of at least two discovery algorithms (Inductive Miner, Heuristics Miner, plus the DFG) on the parcel log with six activities and on the courier-day view, at least two abstraction levels (single events, batches of consecutive accepts and pickups, refined activity labels), with fitness, precision and model size.
   - One candidate BPMN model (`.bpmn` and image) and a short analysis of how preprocessing decisions change the model.
   - LNCS report skeleton in `report/`.
+  - Progress 17 Nov: `src/lade/discovery.py` and `03_discovery.ipynb` compare the Inductive Miner, the Inductive Miner with a 20% noise filter and the Heuristics Miner on four logs (parcel with 6 and with 4 activities, courier-day with single events and with batches), with token-based fitness, precision, F1, size and soundness. Candidate BPMN: Inductive Miner with noise filter on the 6-activity parcel log (fitness 99.0%, precision 88.2%), in `outputs/models/03_parcel_candidate.bpmn`. LNCS skeleton in `report/`. Still open: alignment-based measures for the candidate and the courier-day measures on all cases (now a 2,000-case sample).
 - Done when: the comparison table exists; the candidate BPMN opens in a BPMN editor; the notebook runs on event log v1.
 
 ### M3 · Mid-term presentation (2 Dec) — both
