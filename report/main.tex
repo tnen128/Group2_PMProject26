@@ -1,0 +1,35 @@
+% Report skeleton, LNCS format, at most 15 pages.
+% llncs.cls is not committed: use Overleaf (it ships the class) or download it from Springer's LNCS author page.
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\graphicspath{{../outputs/figures/}}
+
+\begin{document}
+\title{Pickups against their promised window:\\process mining of last-mile parcel pickups (LaDe, Jilin)}
+\titlerunning{Process mining of last-mile parcel pickups}
+\author{Mohamed Badawy \and Abdelrahman ElKoussy}
+\institute{Technical University of Munich, Process Mining Project WS 2026/27, Group B}
+\maketitle
+
+\begin{abstract}
+% Data, event log, discovered model, main findings of the enhancement (150--250 words).
+\end{abstract}
+
+\section{Introduction}            % Abdelrahman: context, research question, contributions
+\section{Data and event log}      % Mohamed: LaDe, building decisions, case notion, preprocessing pipeline and its effect
+\section{Process discovery}       % Abdelrahman: algorithm comparison, candidate BPMN, effect of preprocessing on the model
+\section{Process enhancement}
+\subsection{Bottlenecks, batching and routing}   % Abdelrahman
+\subsection{Attributes related to delays}       % Mohamed
+\section{Discussion and conclusion}              % Abdelrahman: limitations, threats to validity, future work
+
+\bibliographystyle{splncs04}
+\bibliography{references}
+
+\appendix
+\section{Event log metadata}      % Mohamed: the 37 attributes (Costa et al., 2025)
+\section{Roles and activities}    % both
+\end{document}
