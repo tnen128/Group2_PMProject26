@@ -1,0 +1,13 @@
+log,algorithm,fitness %,fitting traces %,precision %,F1 %,transitions,places,arcs,sound
+"parcel, 6 activities",Inductive Miner,100.0,100.0,56.5,72.2,11,13,30,True
+"parcel, 6 activities","Inductive Miner, 20% noise filter",99.0,88.4,88.2,93.2,10,11,24,True
+"parcel, 6 activities",Heuristics Miner,97.3,83.7,100.0,98.7,10,8,23,False
+"parcel, 4 activities",Inductive Miner,100.0,100.0,100.0,100.0,6,8,14,True
+"parcel, 4 activities","Inductive Miner, 20% noise filter",100.0,100.0,100.0,100.0,6,8,14,True
+"parcel, 4 activities",Heuristics Miner,99.9,99.3,100.0,99.9,6,6,14,False
+"courier-day, single events",Inductive Miner,100.0,100.0,69.3,81.9,10,8,20,True
+"courier-day, single events","Inductive Miner, 20% noise filter",100.0,100.0,69.3,81.9,10,8,20,True
+"courier-day, single events",Heuristics Miner,100.0,100.0,69.3,81.9,8,6,16,True
+"courier-day, batches",Inductive Miner,100.0,100.0,100.0,100.0,5,5,10,True
+"courier-day, batches","Inductive Miner, 20% noise filter",100.0,100.0,100.0,100.0,5,5,10,True
+"courier-day, batches",Heuristics Miner,23.1,0.0,55.1,32.5,2,3,3,False
